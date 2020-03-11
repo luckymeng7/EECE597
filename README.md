@@ -15,4 +15,4 @@ __Acutal path__
 
 ## 3. Object Detection
 
-<img src="ObjectDetection/ObjectDetect_frame1.jpg" title="Object_Detection" width=50% height=50% />
+<img src="ObjectDetection/ObjectDetect_frame1.jpg" title="Object_Detection" width=90% height=90% />
