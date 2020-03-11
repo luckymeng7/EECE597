@@ -79,7 +79,7 @@ while (1)
     end 
     
     obstacle_changed = 0;
-    % Arbitrarily addObstacle
+    % Arbitrarily add Obstacle, to be modified as real time 
     if (stepCount == addObstacle(1))
         currentObstacle = obstacle;
         currentObstacle.no = 2;
