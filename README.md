@@ -1,14 +1,18 @@
 # EECE597
 EECE 597 Project code will be commit here
 
-1. Path planning with RRT, MATLAB
+## 1. Path planning with RRT, MATLAB
 
-![RRT_Path_Plan](PathPlanRRT/rrt_path.jpg)
+<img src="PathPlanRRT/rrt_path.jpg" title="RRT_Path_Plan" width=50% height=50% />
 
-2. Real-time path planning with RRT, add obstacle half way
+## 2. Real-time path planning with RRT, add obstacle half way
 
-![Online_RRT](PathPlanRRT/onlineRRT.jpg)
+<img src="PathPlanRRT/onlineRRT.jpg" title="Online_RRT" width=50% height=50% />
 
-Acutal path
+__Acutal path__
 
-![Actual path](PathPlanRRT/onlineRRT_actualPath.jpg)
+<img src="PathPlanRRT/onlineRRT_actualPath.jpg" title="Actual path" width=50% height=50% />
+
+## 3. Object Detection
+
+<img src="ObjectDetection/ObjectDetect_frame1.jpg" title="Object_Detection" width=90% height=90% />
