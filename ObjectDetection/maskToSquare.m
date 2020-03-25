@@ -101,5 +101,4 @@ function [obstacleSquare, recVector] = maskToSquare(obstacleMask)
         end 
     end 
 
-
 end

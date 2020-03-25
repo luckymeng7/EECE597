@@ -60,19 +60,26 @@ function [] = objectDetect(bagPath,limitRangeLow, limitRangeHigh, output)
         
         % Plot the 1st Frame
         if (i==1)
+            % Get the top View sketch 
+            topview = topView(img, 2000);
             % Show this as image, last frame , to be removed and cleaned up
             figure 
             subplot(2,3,1)
             depthImg = mat2gray(img);
             imshow(depthImg) 
             title ('Depth image in gray scale')
+%             subplot(2,3,2)
+%             imshow(img_color)
+%             title ('Regular RGB image')
             subplot(2,3,2)
-            imshow(img_color)
-            title ('Regular RGB image')
-            subplot(2,3,3)
             obstacle_mask_gray = mat2gray(obstacleMask);
             imshow(obstacle_mask_gray)
             title ('Detect Obstacle area')
+            subplot(2,3,3)
+            imshow(topview)
+            hold on 
+            set(gca,'YDir','normal')
+            title ('Topview of the depth Img')
             subplot(2,3,4)
             imshow(obstacle_mask_ON_RGB)
             title ('Obstacle mask on RGB image')
@@ -82,6 +89,7 @@ function [] = objectDetect(bagPath,limitRangeLow, limitRangeHigh, output)
             subplot(2,3,6)
             imshow(rec_on_depth)
             title ('Rectangle on depth image')
+            subplot
             
         end 
     
