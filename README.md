@@ -18,20 +18,15 @@ __Acutal path__
 <img src="ObjectDetection/ObjectDetect_frame1.jpg" title="Object_Detection" width=90% height=90% />
 
 ## 4. Improvement on Object Detection (March 25, 2020)
-<img src="ObjectDetection/ObjectDetect_w_Rect.jpg" title="Object_Detection" width=90% height=90% />
+<img src="ObjectDetection/ObjectDetect_w_Rect.jpg" title="Object_Detection_Improved" width=90% height=90% />
 
->Obstacle 1 width: 33 mm
+>Obstacle 1 width: 33 mm, Obstacle 1 height: 76 mm
 >
->Obstacle 1 height: 76 mm
+>Obstacle 2 width: 918 mm, Obstacle 2 height: 1504 mm
 >
->Obstacle 2 width: 918 mm
+>Obstacle 3 width: 819 mm, Obstacle 3 height: 1255 mm
 >
->Obstacle 2 height: 1504 mm
->
->Obstacle 3 width: 819 mm
->
->Obstacle 3 height: 1255 mm
->
->Obstacle 4 width: 417 mm
->
->Obstacle 4 height: 1758 mm
+>Obstacle 4 width: 417 mm, Obstacle 4 height: 1758 mm
+
+### Top View image from depth info
+<img src="ObjectDetection/ObjectDetect_topView.JPG" title="Top_View" width=50% height=50% />
