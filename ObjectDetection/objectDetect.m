@@ -48,6 +48,7 @@ function [] = objectDetect(bagPath,limitRangeLow, limitRangeHigh, output)
         width = zeros(size(recVector, 1));
         height = zeros(size(recVector, 1));
         for nRec = 1 : size(recVector, 1) 
+            % FOV?? [74,62] or [86,57] ??
             width(nRec) = recVector(nRec,3)/size(img, 2) * tan(74 * pi/180) * img((recVector(nRec,2)+uint16(floor(recVector(nRec,4)/2))), (recVector(nRec,1)+uint16(floor(recVector(nRec,3)*2/3))));
             height(nRec) = recVector(nRec,4)/size(img, 1) * tan(62 * pi/180) * img((recVector(nRec,2)+uint16(floor(recVector(nRec,4)/2))), (recVector(nRec,1)+uint16(floor(recVector(nRec,3)*2/3))));
            

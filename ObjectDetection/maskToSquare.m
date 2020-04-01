@@ -41,8 +41,6 @@ function [obstacleSquare, recVector] = maskToSquare(obstacleMask)
         end 
     end 
     
-
-    
     row = histogramR;
     row(row < Arb) = 0;
     row(row >= Arb) = 1;
@@ -68,6 +66,7 @@ function [obstacleSquare, recVector] = maskToSquare(obstacleMask)
         end 
     end 
 
+    % Assgin vector for each object 
     if (count_objectC == 0)
         % No object detected!
         recVector = 0;
