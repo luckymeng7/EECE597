@@ -41,9 +41,11 @@ function [] = objectDetect(bagPath,limitRangeLow, limitRangeHigh, output)
         end 
         % Combine the images back to vedio 
         topview = topView(img, 2000);
-        writeVideo(videoHandler,rec_on_RGB);
+        scaledTopview = rescale (topview);
+        %writeVideo(videoHandler,obstacle_mask_ON_RGB);
+        %writeVideo(videoHandler,rec_on_RGB);
         %writeVideo(videoHandler,rec_on_depth);
-        %writeVideo(videoHandler,topview);
+        writeVideo(videoHandler,scaledTopview);
         
         % Measurement, based on the FOV from datasheet for depth camera and
         % depth value as the average of the rectangle, img(x,y) is the

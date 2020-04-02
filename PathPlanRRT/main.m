@@ -1,4 +1,6 @@
 % main function to run the pathPlan funtion
+% To run this code, need to go to function obstacleFree.m and uncomment the
+% part for non topView version
 clc;clear;
 
 %% Initial Variables
@@ -49,6 +51,7 @@ addObstacle(2) = 40;
 % Flag and counter for obstacle update
 obstacleUpdate = 1;
 isFinal = 0;
+isTopview = 0;
 
 %% First Path plan function
 while (1)
@@ -60,11 +63,12 @@ while (1)
         break
     end 
 end
-%% Plotting 
+
+% Plot the initial plan
 figure
 subplot(2,2,1)
-plotAll(planedTree, initialPosition, goalPosition, initialObstacle, planedPathCoordinate, isFinal)
-title ('Original path')
+plotAll(planedTree, initialPosition, goalPosition, initialObstacle, planedPathCoordinate, isFinal, isTopview)
+title ('First path')
 
 %% Start to Move, update the tree and path for each iteration
 while (1)
@@ -124,7 +128,7 @@ while (1)
             end 
         end
         subplot(2,2,obstacleUpdate)
-        plotAll(planedTree, currentTree.rootNode.position, goalPosition, currentObstacle, planedPathCoordinate, isFinal)
+        plotAll(planedTree, currentTree.rootNode.position, goalPosition, currentObstacle, planedPathCoordinate, isFinal, isTopview)
         title('Update path when obstacle detected')
     end
 
@@ -136,5 +140,5 @@ end
 
 isFinal = 1;
 subplot(2,2,4)
-plotAll(planedTree, currentTree.rootNode.position, goalPosition, currentObstacle, actualPath, isFinal)
+plotAll(planedTree, currentTree.rootNode.position, goalPosition, currentObstacle, actualPath, isFinal, isTopview)
 title('Final path')

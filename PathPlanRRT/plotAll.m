@@ -1,16 +1,29 @@
 %Plot the whole thing
 
-function [] = plotAll(currentTree, initialPosition, goalPosition, currentObstacle,planedPath, isFinal)
+function [] = plotAll(currentTree, initialPosition, goalPosition, currentObstacle, planedPath, isFinal, isTopview)
 
 hold on 
 % Draw canvas
 
 % Draw obstacle circle
-for i = 1:currentObstacle.no
-    th = 0:pi/50:2*pi;
-    xunit = currentObstacle.size(i) * cos(th) + currentObstacle.position(i,1);
-    yunit = currentObstacle.size(i) * sin(th) + currentObstacle.position(i,2);
-    plot(xunit, yunit)
+
+if (isTopview)
+    %imshow(~currentObstacle);set(gca,'YDir','normal')
+    [rows, columns] = size(currentObstacle);
+    for i = 1:rows
+        for j = 1:columns
+            if ( currentObstacle(i, j) == 1)
+                plot (i,j, 'g*')
+            end 
+        end 
+    end 
+else
+    for i = 1:currentObstacle.no
+        th = 0:pi/50:2*pi;
+        xunit = currentObstacle.size(i) * cos(th) + currentObstacle.position(i,1);
+        yunit = currentObstacle.size(i) * sin(th) + currentObstacle.position(i,2);
+        plot(xunit, yunit)
+    end 
 end 
 
 % Initial and final position
