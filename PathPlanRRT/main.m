@@ -46,6 +46,9 @@ obstacle_changed = 0;
 addObstacle(1) = 10;
 addObstacle(2) = 40;
 
+% Flag and counter for obstacle update
+obstacleUpdate = 1;
+isFinal = 0;
 
 %% First Path plan function
 while (1)
@@ -58,7 +61,10 @@ while (1)
     end 
 end
 %% Plotting 
-plotAll(planedTree, initialPosition, goalPosition, initialObstacle, planedPathCoordinate)
+figure
+subplot(2,2,1)
+plotAll(planedTree, initialPosition, goalPosition, initialObstacle, planedPathCoordinate, isFinal)
+title ('Original path')
 
 %% Start to Move, update the tree and path for each iteration
 while (1)
@@ -84,7 +90,7 @@ while (1)
         currentObstacle = obstacle;
         currentObstacle.no = 2;
         currentObstacle.size = [6 8];
-        currentObstacle.position = [30 50;50 50];
+        currentObstacle.position = [30 50;40 30];
         obstacle_changed = 1;
         obstacleChangeCount = obstacleChangeCount+1;
         
@@ -92,7 +98,7 @@ while (1)
         currentObstacle = obstacle;
         currentObstacle.no = 3;
         currentObstacle.size = [6 8 10];
-        currentObstacle.position = [30 50; 50 50; 60 70];
+        currentObstacle.position = [30 50; 40 30; 60 70];
         obstacle_changed = 1;  
         obstacleChangeCount = obstacleChangeCount+1;
         
@@ -100,6 +106,7 @@ while (1)
     
     % Change the path until obstacle change detected
     if (obstacle_changed)  
+        obstacleUpdate = obstacleUpdate + 1;
         currentNode.pathToNode = initalPath;
         currentTree = tree;
         currentTree.indexSize = 1;
@@ -116,7 +123,9 @@ while (1)
                 break
             end 
         end
-        plotAll(planedTree, currentTree.rootNode.position, goalPosition, currentObstacle, planedPathCoordinate)
+        subplot(2,2,obstacleUpdate)
+        plotAll(planedTree, currentTree.rootNode.position, goalPosition, currentObstacle, planedPathCoordinate, isFinal)
+        title('Update path when obstacle detected')
     end
 
     stepCount = stepCount+1;
@@ -125,3 +134,7 @@ end
 
 %plotGif(initialPosition, goalPosition, actualPath, planedPathList, currentObstacle, addObstacle);
 
+isFinal = 1;
+subplot(2,2,4)
+plotAll(planedTree, currentTree.rootNode.position, goalPosition, currentObstacle, actualPath, isFinal)
+title('Final path')

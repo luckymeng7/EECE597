@@ -1,6 +1,6 @@
 %Plot the whole thing
 
-function [] = plotAll(currentTree, initialPosition, goalPosition, currentObstacle,planedPath)
+function [] = plotAll(currentTree, initialPosition, goalPosition, currentObstacle,planedPath, isFinal)
 
 hold on 
 % Draw canvas
@@ -18,8 +18,10 @@ plot(initialPosition(1),initialPosition(2),'b*')
 plot(goalPosition(1),goalPosition(2),'r*')
 
 % Draw tree
-plot(currentTree.allNodesPosition(:,1),currentTree.allNodesPosition(:,2), '.');
-%comet(currentTree.allNodesPosition(:,1),currentTree.allNodesPosition(:,2));
+if (isFinal==0)
+    plot(currentTree.allNodesPosition(:,1),currentTree.allNodesPosition(:,2), '.');
+    %comet(currentTree.allNodesPosition(:,1),currentTree.allNodesPosition(:,2));
+end 
 
 % Draw path
 plot(planedPath(:,1),planedPath(:,2),'-x')

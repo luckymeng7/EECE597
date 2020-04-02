@@ -40,11 +40,14 @@ function [] = objectDetect(bagPath,limitRangeLow, limitRangeHigh, output)
             rec_on_depth = insertShape(rec_on_depth, 'Rectangle', [recVector(nRec,1) recVector(nRec,2) recVector(nRec,3) recVector(nRec,4)], 'LineWidth', 5, 'Color', 'red');
         end 
         % Combine the images back to vedio 
+        topview = topView(img, 2000);
         writeVideo(videoHandler,rec_on_RGB);
         %writeVideo(videoHandler,rec_on_depth);
+        %writeVideo(videoHandler,topview);
         
         % Measurement, based on the FOV from datasheet for depth camera and
-        % depth value of the center of the rectangle
+        % depth value as the average of the rectangle, img(x,y) is the
+        % depth info
         width = zeros(size(recVector, 1));
         height = zeros(size(recVector, 1));
         for nRec = 1 : size(recVector, 1) 
