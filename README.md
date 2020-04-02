@@ -29,4 +29,9 @@ __Acutal path__
 >Obstacle 4 width: 417 mm, Obstacle 4 height: 1758 mm
 
 ### Top View image from depth info
-<img src="ObjectDetection/ObjectDetect_topView.JPG" title="Top_View" width=50% height=50% />
+
+<img src="ObjectDetection/ObjectDetect_topView.JPG" title="Top_View" width=30% height=30% />
+
+## 5. Map the obstacle on path plan (Apr 1, 2020)
+
+<img src="Integrate/object_mapped_on_pathplan.jpg" title="object_on_path" width=50% height=50% />
