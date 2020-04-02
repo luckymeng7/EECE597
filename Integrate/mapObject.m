@@ -44,8 +44,8 @@ function [path]= mapObject(initialPosition, goalPosition, maxStepSize, canvasSiz
     isFinal = 0;
     isTopview = 1; 
     % Plot the initial plan
-    figure
-    %subplot(2,2,1)
+    % figure
+    subplot(1,3,3)
     plotAll(planedTree, initialPosition, goalPosition, obstacleMask, planedPathCoordinate, isFinal, isTopview)
     title ('First path')
     

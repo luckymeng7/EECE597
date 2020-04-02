@@ -28,4 +28,15 @@ function mask =  maskOnCanvas(canvasSize, aTopView, currentPosition, currentDire
             end
         end 
     end 
+    
+    % Plot the obstacle 
+    figure
+    subplot (1,3,1)
+    imshow(topViewBW); set(gca,'YDir','normal')
+    title('Topview of the depth img, after conversion')
+    subplot (1,3,2)
+    imshow(mask); set(gca,'YDir','normal')
+    title('Mask for map, after rotation and shift')
+    
+    
 end

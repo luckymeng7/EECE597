@@ -5,7 +5,7 @@
 %   outputTopView, a topView object 
 function outputTopView = vedioToTopview(videoPath, conversionRate)
     videoHandler = VideoReader(videoPath);
-    outputTopView = topView;
+    outputTopView = topViewObject;
     outputTopView.conversionRate = conversionRate;
     outputTopView.frameNo = videoHandler.NumFrames;
     outputTopView.allFrames(:,:,1) = rgb2gray(read(videoHandler,1));
