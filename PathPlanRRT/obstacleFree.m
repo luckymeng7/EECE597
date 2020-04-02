@@ -3,8 +3,25 @@
 function free = obstacleFree(checkPosition,nearestNode,currentObstacle)
     free = true;
 %     if (isTopview)
-        % Check if the node is on the obstacle 
-        if (currentObstacle(ceil(checkPosition(2)), ceil(checkPosition(1))) == 1)
+        % Check if the node is on the obstacle, check each corner
+        ceilx = ceil(checkPosition(2));
+        ceily = ceil(checkPosition(1));
+        if (floor(checkPosition(2)) == 0)
+            floorx = 1;
+        else 
+            floorx = floor(checkPosition(2));
+        end
+        if (floor(checkPosition(1)) == 0)
+            floory = 1;
+        else
+            floory = floor(checkPosition(1));
+        end
+        corner_1 = currentObstacle(ceilx, ceily);
+        corner_2 = currentObstacle(floorx, ceily);
+        corner_3 = currentObstacle(floorx, floory);
+        corner_4 = currentObstacle(ceilx, floory);
+        
+        if (corner_1 == 1 || corner_2 == 1 || corner_3 == 1 || corner_4 == 1)
             free = false;
         end
         

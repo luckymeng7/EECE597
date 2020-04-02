@@ -13,7 +13,7 @@ if (isTopview)
     for i = 1:rows
         for j = 1:columns
             if ( currentObstacle(i, j) == 1)
-                plot (i,j, 'g*')
+                plot (j,i, 'g*')
             end 
         end 
     end 

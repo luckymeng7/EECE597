@@ -16,7 +16,7 @@
 
 function [finalTree, planedPathCoordinate, planedPathIndex, pathFound] = pathPlan(currentTree, goalPosition, maxStepSize, currentObstacle, canvasSize)
     % Initial Varibles
-    maxIteration = 1000;
+    maxIteration = 2000;
     count = 1;
     pathFound = 0;
     
