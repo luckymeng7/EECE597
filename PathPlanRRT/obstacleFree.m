@@ -1,29 +1,43 @@
 % Funtion to check if the node or the path to nearestNode is on obstacle
 % passed obstacle
 function free = obstacleFree(checkPosition,nearestNode,currentObstacle)
-    free = true;
-%     if (isTopview)
-        % Check if the node is on the obstacle, check each corner
-        ceilx = ceil(checkPosition(2));
-        ceily = ceil(checkPosition(1));
-        if (floor(checkPosition(2)) == 0)
-            floorx = 1;
-        else 
-            floorx = floor(checkPosition(2));
-        end
-        if (floor(checkPosition(1)) == 0)
-            floory = 1;
-        else
-            floory = floor(checkPosition(1));
-        end
-        corner_1 = currentObstacle(ceilx, ceily);
-        corner_2 = currentObstacle(floorx, ceily);
-        corner_3 = currentObstacle(floorx, floory);
-        corner_4 = currentObstacle(ceilx, floory);
-        
-        if (corner_1 == 1 || corner_2 == 1 || corner_3 == 1 || corner_4 == 1)
-            free = false;
-        end
+    free = true;  
+    
+%   if (isTopview)
+
+    % Using method described in http://web.cvxr.com/cvx/examples/cvxbook/Ch08_geometric_probs/html/min_vol_elp_finite_set.html
+    % To draw a minimum volume ellipsoid covering the mask
+    A = currentObstacle(1:2,:);
+    b = currentObstacle(3,:)';
+    n = 2;
+    
+    % Check the distance to ellipsoid
+    norm_distance = norms(A*checkPosition' + b*ones(1,n), 2);
+    if (norm_distance(1) < 1 || norm_distance(1) == 1)
+        free = false;
+    end 
+
+%         % Check if the node is on the obstacle, check each corner
+%         ceilx = ceil(checkPosition(2));
+%         ceily = ceil(checkPosition(1));
+%         if (floor(checkPosition(2)) == 0)
+%             floorx = 1;
+%         else 
+%             floorx = floor(checkPosition(2));
+%         end
+%         if (floor(checkPosition(1)) == 0)
+%             floory = 1;
+%         else
+%             floory = floor(checkPosition(1));
+%         end
+%         corner_1 = currentObstacle(ceilx, ceily);
+%         corner_2 = currentObstacle(floorx, ceily);
+%         corner_3 = currentObstacle(floorx, floory);
+%         corner_4 = currentObstacle(ceilx, floory);
+%         
+%         if (corner_1 == 1 || corner_2 == 1 || corner_3 == 1 || corner_4 == 1)
+%             free = false;
+%         end
         
         % TBD: Check if the path to nearest Node is on obstacle
          

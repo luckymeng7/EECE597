@@ -28,10 +28,10 @@ function [path]= mapObject(initialPosition, goalPosition, maxStepSize, canvasSiz
     firstTopview = imresize(firstTopview,cRate);
     % Direction for the first point is from initial to goal
     currentDirection = (goalPosition - initialPosition)/norm(goalPosition - initialPosition);
-    obstacleMask =  maskOnCanvas(canvasSize, firstTopview, initialPosition, currentDirection);
+    [obstacleMask, ellipse] =  maskOnCanvas(canvasSize, firstTopview, initialPosition, currentDirection);
     
     while (1)
-        [planedTree, planedPathCoordinate, planedPathIndex, pathFound] = pathPlan(initialTree, goalPosition, maxStepSize, obstacleMask, canvasSize);
+        [planedTree, planedPathCoordinate, planedPathIndex, pathFound] = pathPlan(initialTree, goalPosition, maxStepSize, ellipse, canvasSize);
         if(pathFound)
             planedPathList = pathList;
             planedPathList.no = 1;
@@ -45,8 +45,8 @@ function [path]= mapObject(initialPosition, goalPosition, maxStepSize, canvasSiz
     isTopview = 1; 
     % Plot the initial plan
     % figure
-    subplot(1,3,3)
-    plotAll(planedTree, initialPosition, goalPosition, obstacleMask, planedPathCoordinate, isFinal, isTopview)
+    subplot(2,2,4)
+    plotAll(planedTree, initialPosition, goalPosition, ellipse, planedPathCoordinate, isFinal, isTopview)
     title ('First path')
     
     

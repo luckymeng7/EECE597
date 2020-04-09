@@ -1,0 +1,7 @@
+*.asv
+ObjectDetection/output1.avi
+ObjectDetection/output3.avi
+ObjectDetection/output4.avi
+ObjectDetection/output2.avi
+ObjectDetection/output4_depth.avi
+PathPlanRRT/output4.avi

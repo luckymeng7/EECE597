@@ -5,18 +5,19 @@ function [] = plotAll(currentTree, initialPosition, goalPosition, currentObstacl
 hold on 
 % Draw canvas
 
-% Draw obstacle circle
+% Draw obstacle circle/ellipse
 
 if (isTopview)
     %imshow(~currentObstacle);set(gca,'YDir','normal')
-    [rows, columns] = size(currentObstacle);
-    for i = 1:rows
-        for j = 1:columns
-            if ( currentObstacle(i, j) == 1)
-                plot (j,i, 'g*')
-            end 
-        end 
-    end 
+    %plot(currentObstacle(:,1),currentObstacle(:,2), 'g*');
+    A = currentObstacle(1:2,:);
+    b = currentObstacle(3,:)';
+    
+    noangles = 200;
+    angles   = linspace( 0, 2 * pi, noangles );
+    ellipse  = A \ [ cos(angles) - b(1) ; sin(angles) - b(2) ];
+    plot(ellipse(1,:), ellipse(2,:), 'b-' );
+
 else
     for i = 1:currentObstacle.no
         th = 0:pi/50:2*pi;
