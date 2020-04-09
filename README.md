@@ -20,18 +20,14 @@ __Acutal path__
 ## 4. Improvement on Object Detection (March 25, 2020)
 <img src="ObjectDetection/ObjectDetect_w_Rect.jpg" title="Object_Detection_Improved" width=90% height=90% />
 
->Obstacle 1 width: 33 mm, Obstacle 1 height: 76 mm
->
->Obstacle 2 width: 918 mm, Obstacle 2 height: 1504 mm
->
->Obstacle 3 width: 819 mm, Obstacle 3 height: 1255 mm
->
->Obstacle 4 width: 417 mm, Obstacle 4 height: 1758 mm
-
 ### Top View image from depth info
 
 <img src="ObjectDetection/ObjectDetect_topView.JPG" title="Top_View" width=30% height=30% />
 
 ## 5. Map the obstacle on path plan (Apr 1, 2020)
 
-<img src="Integrate/object_mapped_on_pathplan_and_obstacle.jpg" title="object_on_path" width=100% height=90% />
+<img src="Integrate/Figure/object_mapped_on_pathplan_and_obstacle.jpg" title="object_on_path" width=100% height=90% />
+
+## 6. Map the obstacle with an ellipse boundary (Apr 9, 2020)
+
+<img src="Integrate/Figure/Object_ellipse_pathplan.jpg" title="ellipse_on_path" width=100% height=90% />
