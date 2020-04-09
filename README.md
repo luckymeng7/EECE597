@@ -34,4 +34,4 @@ __Acutal path__
 
 ## 5. Map the obstacle on path plan (Apr 1, 2020)
 
-<img src="Integrate/object_mapped_on_pathplan.jpg" title="object_on_path" width=50% height=50% />
+<img src="Integrate/object_mapped_on_pathplan_and_obstacle.jpg" title="object_on_path" width=100% height=90% />
