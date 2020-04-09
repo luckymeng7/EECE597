@@ -1,5 +1,6 @@
 # EECE597
 EECE 597 Project code will be commit here
+[TOC]
 
 ## 1. Path planning with RRT, MATLAB (Feb 26, 2020)
 
