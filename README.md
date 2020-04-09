@@ -30,4 +30,4 @@ __Acutal path__
 
 ## 6. Map the obstacle with an ellipse boundary (Apr 9, 2020)
 
-<img src="Integrate/Figure/Object_ellipse_pathplan.jpg" title="ellipse_on_path" width=100% height=90% />
+<img src="Integrate/Figure/Object_ellipse_pathplan.jpg" title="ellipse_on_path" width=60% height=60% />
