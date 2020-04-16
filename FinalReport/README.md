@@ -1,6 +1,6 @@
 # Report knitted with UBC Thesis template
 
-Template integtated to R from: https://github.com/jakelever/ubcthesis_bookdown
+Template integtated to R from: [https://github.com/jakelever/ubcthesis_bookdown](https://github.com/jakelever/ubcthesis_bookdown)
 
 Generated report: [link](https://luckymeng7.github.io/EECE597/FinalReport/thesis.pdf)
 
