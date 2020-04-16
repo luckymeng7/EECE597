@@ -6,8 +6,9 @@ This project implemented object detected with RealSense camera with RRT trajecto
 ## Introduction to the repo
 There are three main parts for this project: trajectory plan algorithm, obstacle dection with RGBD image processing, and integration of the detected obstacle to trajectory plan. 
 
-The final report is [here](https://luckymeng7.github.io/EECE597/FinalReport/thesis.pdf)
-Further instruction on UBC report template is [here](https://luckymeng7.github.io/EECE597/FinalReport/)
+The final report is [here](https://luckymeng7.github.io/EECE597/FinalReport/thesis.pdf).
+
+Further instruction on UBC report template is [here](https://luckymeng7.github.io/EECE597/FinalReport/).
 
 ## Usage instruction
 #### Packages need to be installed in MATLAB (Please contact me if other toolboxes needed):
