@@ -20,7 +20,7 @@ bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 bookdown::render_book("index.Rmd", "bookdown::word_document2")
 ```
 
-Original instruction as follow
+Original instruction as follow:
 
 # UBC Thesis template using Bookdown
 
