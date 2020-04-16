@@ -15,7 +15,6 @@ Further instruction on UBC report template is [here](https://luckymeng7.github.i
 #### Run path planning with pre-defined objects
 - Clone the whole repo to local dir
 - Nevigate to folder `PathPlanRRT` in MATLAB. This can be done by opening one of the matlab scripts here, for exmaple `pathPlan_main.m`
-- Set `inTopview` to `0` at line 56 of `PathPlanRRT\pathPlan_main.m`
 - Type this command in command window: __run("pathPlan_main.m")__
 - Add any path needed to be included
 
@@ -25,7 +24,6 @@ Further instruction on UBC report template is [here](https://luckymeng7.github.i
 - Add any path needed to be included
 
 #### Run the integrated result:
-- Set `inTopview` to `1` at line 56 of `PathPlanRRT\pathPlan_main.m`
 - Nevigate to folder `Integrate` in MATLAB. This can be done by opening one of the matlab scripts here, for example `integrate_main.m`
 - Type this command in command window: __run("integrate_main.m")__
 - Add any path needed to be included
