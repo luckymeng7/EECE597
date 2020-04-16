@@ -1,3 +1,27 @@
+# Report knitted with UBC Thesis template
+
+Template integtated to R from: https://github.com/jakelever/ubcthesis_bookdown
+
+Generated report: [link](https://luckymeng7.github.io/EECE597/FinalReport/thesis.pdf)
+
+To knit the report:
+```r
+Install.pacakges("tinytex")
+Library("tinytex")
+Tinytex::install_tinytex()
+
+Install.packages("bookdown")
+Library("bookdown")
+
+# For a PDF
+bookdown::render_book("index.Rmd", "bookdown::pdf_book")
+
+# For a Word file - useful for Track Changes
+bookdown::render_book("index.Rmd", "bookdown::word_document2")
+```
+
+Original instruction as follow
+
 # UBC Thesis template using Bookdown
 
 This is skeleton Bookdown code to create a thesis that complies with the [UBC formatting guidelines](https://www.grad.ubc.ca/current-students/dissertation-thesis-preparation/formatting-requirements) for a thesis, specifically a PhD thesis. Bookdown allows you to easily put in plots and other R code inline with your thesis text. Plus it can manage citations and cross-references.
