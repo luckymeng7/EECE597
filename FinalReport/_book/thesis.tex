@@ -1,0 +1,168 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  oneside]{ubcthesis}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Trajectory planning with real time vision-based obstacle detection},
+  pdfauthor={Xuemeng Li},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\previousdegree{B.Sc., Unseen University, 1314}
+
+\usepackage{booktabs}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{makecell}
+
+
+
+\makeindex
+\frontmatter
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{Trajectory planning with real time vision-based obstacle detection}
+\author{Xuemeng Li}
+\date{April 2020}
+
+\begin{document}
+\maketitle
+
+
+\noindent The following individuals certify that they have read,
+and recommend to the Faculty of Graduate and Postdoctoral Studies
+for acceptance, the thesis entitled:
+
+\begin{center}
+{\large \textbf{A study on the intake of coffee and the output of research studies}}
+\end{center}
+
+submitted by \textbf{Charles Dickens} in partial fulfillment of the requirements for the degree of \textbf{Doctor of Philosophy} in \textbf{Bioinformatics}.%
+\par\bigskip%
+
+\noindent\textbf{Examining Committee:}%
+\par\medskip\noindent{Michael Palin, Geography}\\\emph{Supervisor}
+\par\medskip\noindent{John Cleese, English Literature}\\\emph{Supervisory Committee Member}
+\par\medskip\noindent{Eric Idle, Mathematics}\\\emph{Supervisory Committee Member}
+\par\medskip\noindent{Graham Chapman, Physics}\\\emph{Supervisory Committee Member}
+\par\medskip\noindent{Terry Jones, Geology}\\\emph{Supervisory Committee Member}
+\par\medskip\noindent{Terry Gilliam, Film Making}\\\emph{University Examiner}
+\par\bigskip%
+\noindent\textbf{Additional Supervisory Committee Members:}%
+\par\medskip\noindent{John Cleese, English Literature}\\\emph{Supervisory Committee Member}
+\par\medskip\noindent{Eric Idle, Mathematics}\\\emph{Supervisory Committee Member}
+\par\medskip\noindent{Graham Chapman, Physics}\\\emph{Supervisory Committee Member}
+\cleardoublepage
+
+\chapter{Abstract}
+
+Here are some things that I did.
+
+\chapter{Lay Summary}
+
+Here are some things that I did.
+
+\chapter{Preface}
+
+Here are I describe what work has already been published.
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\hypertarget{list-of-abbreviations}{%
+\chapter{List of Abbreviations}\label{list-of-abbreviations}}
+
+\begin{longtable}{ll}
+\toprule
+Short & Long\\
+\midrule
+CIHR & Canadian Institutes of Health Research\\
+MSFHR & Michael Smith Foundation for Health Research\\
+NCI & National Cancer Institute\\
+PMCOA & PubMed Central Open Access\\
+WGS & whole genome sequencing\\
+\bottomrule
+\end{longtable}
+
+\hypertarget{acknowledgements}{%
+\chapter{Acknowledgements}\label{acknowledgements}}
+
+I would like to thank Stack Overflow for everything.
+
+\hypertarget{dedication}{%
+\chapter{Dedication}\label{dedication}}
+
+To Stack Overflow.
+
+\mainmatter
+
+\hypertarget{introduction}{%
+\chapter{Introduction}\label{introduction}}
+
+Here is the introduction to this thesis. I will do several things. It is heavily based on previous seminal work on penguins \citep{meyer2003pressures}.
+
+\hypertarget{first-chapter-of-research}{%
+\chapter{First Chapter of Research}\label{first-chapter-of-research}}
+
+Here is a research chapter. Look a graph in Figure \ref{fig:myfigure}.
+
+
+
+Also check out the associated data in Table \ref{tab:mytable}.
+
+\hypertarget{conclusions}{%
+\chapter{Conclusions}\label{conclusions}}
+
+I did several things and will now discuss why they are good.
+
+  \bibliography{thesis.bib}
+
+\end{document}
