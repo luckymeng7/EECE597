@@ -1,8 +1,6 @@
 # Trajectory planning with real time vision-based obstacle detection
 This project implemented object detected with RealSense camera with RRT trajectory plan algorithm, simulated in MATLAB environment. This project is done during UBC project course EECE597. Thanks for the supervision of Dr. Maryam Kamgarpour and Dr. Mahdi Yousefi. 
 
-<img src="Integrate/Figure/Object_ellipse_pathplan.jpg" title="ellipse_on_path" width=60% height=50%/>
-
 ## Introduction to the repo
 There are three main parts for this project: trajectory plan algorithm, obstacle dection with RGBD image processing, and integration of the detected obstacle to trajectory plan. 
 
