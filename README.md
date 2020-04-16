@@ -12,9 +12,19 @@ Further instruction on UBC report template is [here](https://luckymeng7.github.i
 #### Packages need to be installed in MATLAB (Please contact me if other toolboxes needed):
 - ROS Toolbox
 
-#### To run the integrated result:
-- Clone the whole repo to local 
-- Nevigate to folder integrate and open one of the matlab scripts here
+#### Run path planning with pre-defined objects
+- Clone the whole repo to local dir
+- Nevigate to folder `PathPlanRRT` in MATLAB. This can be done by opening one of the matlab scripts here, for exmaple `pathPlan_main.m`
+- Type this command in command window: __run("pathPlan_main.m")__
+- Add any path needed to be included
+
+#### Run the object detection
+- Nevigate to folder `ObjectDetection` in MATLAB. This can be done by opening one of the matlab scripts here, for exmaple `videoProcess_main.m`
+- Type this command in command window: __run("videoProcess_main.m")__
+- Add any path needed to be included
+
+#### Run the integrated result:
+- Nevigate to folder `Integrate` in MATLAB. This can be done by opening one of the matlab scripts here, for example `integrate_main.m`
 - Type this command in command window: __run("integrate_main.m")__
 - Add any path needed to be included
 
