@@ -14,7 +14,7 @@
 %   In real time, the path would be updated after currentNode 
 %   
 
-function [finalTree, planedPathCoordinate, planedPathIndex, pathFound] = pathPlan(currentTree, goalPosition, maxStepSize, currentObstacle, canvasSize)
+function [finalTree, planedPathCoordinate, planedPathIndex, pathFound] = pathPlan(currentTree, goalPosition, maxStepSize, currentObstacle, canvasSize, isTopview)
     % Initial Varibles
     maxIteration = 2500;
     count = 1;
@@ -27,7 +27,7 @@ function [finalTree, planedPathCoordinate, planedPathIndex, pathFound] = pathPla
     
     
     while (count < maxIteration)
-        nextNode = rrt(currentTree,maxStepSize,currentObstacle, canvasSize);
+        nextNode = rrt(currentTree,maxStepSize,currentObstacle, canvasSize,isTopview);
         currentTree.indexSize = currentTree.indexSize + 1;
         currentTree.allNodesPosition = [currentTree.allNodesPosition; nextNode.position];
         currentTree.allNodes = [currentTree.allNodes nextNode];
@@ -38,7 +38,7 @@ function [finalTree, planedPathCoordinate, planedPathIndex, pathFound] = pathPla
         distance = sqrt(distanceVector(1).^2 + distanceVector(2).^2 );
         
         if ( distance < maxStepSize)
-            if (obstacleFree(goalPosition,nextNode,currentObstacle))
+            if (obstacleFree(goalPosition,nextNode,currentObstacle,isTopview))
                 finalNode.nodeIndex = currentTree.indexSize + 1;
                 finalNode.pathToNode = [nextNode.pathToNode finalNode.nodeIndex];
                 currentTree.indexSize = currentTree.indexSize + 1;

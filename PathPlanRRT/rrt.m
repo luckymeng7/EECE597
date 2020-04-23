@@ -5,14 +5,14 @@
 % Output:
 %   nextNode: the object of nextNode
 
-function nextNode = rrt(currentTree, maxStepSize, currentObstacle, canvasSize)
+function nextNode = rrt(currentTree, maxStepSize, currentObstacle, canvasSize, isTopview)
     nextNode = pathNode;
     while (1)
         qRand = [canvasSize*rand(), canvasSize*rand()];
         nearestNode = nearest(currentTree, qRand);
-        if (obstacleFree(qRand,nearestNode,currentObstacle))
+        if (obstacleFree(qRand,nearestNode,currentObstacle,isTopview))
             qNew = steer (nearestNode, qRand, maxStepSize);
-            if (obstacleFree(qNew,nearestNode, currentObstacle))
+            if (obstacleFree(qNew,nearestNode, currentObstacle, isTopview))
                 nextNode.position = qNew;
                 break;
             end

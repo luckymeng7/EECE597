@@ -5,7 +5,7 @@
 %   initial variables: initial position, goal positio and step size
 % Output:
 %   updated path
-function [path]= mapObject(initialPosition, goalPosition, maxStepSize, canvasSize, topViews)
+function [path,planedTree, obstacle, planedPathIndex]= mapObject(initialPosition, goalPosition, maxStepSize, canvasSize, topViews)
 
     %% Some initialization 
     %   originalNode: Node at start point
@@ -20,6 +20,10 @@ function [path]= mapObject(initialPosition, goalPosition, maxStepSize, canvasSiz
     initialTree.rootNode = originalNode;
     initialTree.allNodesPosition = originalNode.position;
     initialTree.allNodes = originalNode;
+    
+    %   set the topview flag 
+    isTopview = 1;
+    debug = 0;
 
     %% First Path plan function
     % Get the info of first frame from topViews
@@ -29,9 +33,9 @@ function [path]= mapObject(initialPosition, goalPosition, maxStepSize, canvasSiz
     % Direction for the first point is from initial to goal
     currentDirection = (goalPosition - initialPosition)/norm(goalPosition - initialPosition);
     [obstacleMask, ellipse] =  maskOnCanvas(canvasSize, firstTopview, initialPosition, currentDirection);
-    
+    obstacle = ellipse;
     while (1)
-        [planedTree, planedPathCoordinate, planedPathIndex, pathFound] = pathPlan(initialTree, goalPosition, maxStepSize, ellipse, canvasSize);
+        [planedTree, planedPathCoordinate, planedPathIndex, pathFound] = pathPlan(initialTree, goalPosition, maxStepSize, ellipse, canvasSize, isTopview);
         if(pathFound)
             planedPathList = pathList;
             planedPathList.no = 1;
@@ -41,15 +45,14 @@ function [path]= mapObject(initialPosition, goalPosition, maxStepSize, canvasSiz
     end 
     
     path = planedPathCoordinate;
-    isFinal = 0;
-    isTopview = 1; 
-    % Plot the initial plan
-    % figure
-    subplot(2,2,4)
-    plotAll(planedTree, initialPosition, goalPosition, ellipse, planedPathCoordinate, isFinal, isTopview)
-    title ('First path')
-    
-    
-    %% Start to move, update the tree as go (TBD)
+    if (debug)
+        isFinal = 0;
+        % Plot the initial plan
+        % figure
+        subplot(1,4,4)
+        plotAll(planedTree, initialPosition, goalPosition, ellipse, planedPathCoordinate, isFinal, isTopview)
+        title ('First path')
+    end
+
     
 end
