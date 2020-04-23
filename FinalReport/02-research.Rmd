@@ -146,7 +146,7 @@ knitr::include_graphics('figures/7.PNG')
 
 (ref:figure7) Definition of field of view 
 
-The comparison of calculation and measurement are as follow table \@ref(tab:mytable2) and table \@ref(tab:mytable3), where $$L1 = C \cdot l1 \cdot D1$$:
+The comparison of calculation and measurement are as follow table \@ref(tab:mytable2) and table \@ref(tab:mytable3), where $$L1 = C \cdot l1 \cdot D1$$
 
 
 ```{r mytable2, echo=F, eval=T}
