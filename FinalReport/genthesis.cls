@@ -239,9 +239,10 @@
   \ClassWarning{genthesis}{No \noexpand\copyrightnotice given}}
 \institution{The University of British Columbia}
 \institutionaddress{Vancouver}
-\department{Bioinformatics}
-\program{Bioinformatics}
-\faculty{The Faculty of Graduate and Postdoctoral Studies}
+\department{Engineering Science}
+\program{Electrical and Computer Engineering}
+\faculty{The Faculty of Applied Science}
+\degreetitle{Master of Engineering}
 \copyrighttext{\copyright\ \@author\ \@copyrightyear}
 \copyrightnotice{All rights reserved.  This work may not be\\
   reproduced in whole or in part, by photocopy\\

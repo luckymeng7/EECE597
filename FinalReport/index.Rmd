@@ -28,10 +28,7 @@ knitr::kable(abbreviations,
 
 # Acknowledgements
 
-I would like to thank Stack Overflow for everything.
+I would like to thank the supervision of Dr. Maryam Kamgarpour and Dr. Mahdi Yousefi.
 
-# Dedication
-
-To Stack Overflow.
 
 \mainmatter
