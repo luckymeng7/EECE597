@@ -1,0 +1,3 @@
+# Conclusions
+
+The trajectory planning algorithm implemented in this project is capable to detect the obstacle in the camera and generate a pathway to avoid the collision. RRT algorithm has been integrated with the image processing on the video captured by RealSense camera. In the future, control algorithm for path following and object detection in real-time with OpenCV packages should be implemented
