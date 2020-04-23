@@ -66,3 +66,11 @@ __Another Example__
 ### 6. Map the obstacle with an ellipse boundary (Apr 9, 2020)
 
 <img src="Integrate/Figure/Object_ellipse_pathplan.jpg" title="ellipse_on_path" width=60% height=60% />
+
+### 7. Update the path as obstacle moving (Apr 16, 2020) 
+
+<img src="Integrate/Figure/Detected_obstacle_with_ellipse_updated_plan.jpg" title="ellipse_on_path" width=100% height=90% />
+
+### 8. Update the path as move obstacles detected (Apr 23, 2020)
+
+<img src="Integrate/Figure/Detected_obstacle_with_ellipse_updated_plan.jpg" title="ellipse_on_path" width=100% height=90% />
