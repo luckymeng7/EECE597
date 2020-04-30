@@ -34,30 +34,30 @@ Further instruction on UBC report template is [here](https://luckymeng7.github.i
 
 ### 1. Path planning with RRT, MATLAB (Feb 26, 2020)
 
-<img src="PathPlanRRT/rrt_path.jpg" title="RRT_Path_Plan" width=30% height=30% />
+<img src="PathPlanRRT/Figures/rrt_path.jpg" title="RRT_Path_Plan" width=30% height=30% />
 
 ### 2. Real-time path planning with RRT, add obstacle half way (March 4, 2020)
 
-<img src="PathPlanRRT/onlineRRT.jpg" title="Online_RRT" width=30% height=30% />
+<img src="PathPlanRRT/Figures/onlineRRT.jpg" title="Online_RRT" width=30% height=30% />
 
 __Acutal path__
 
-<img src="PathPlanRRT/onlineRRT_actualPath.jpg" title="Actual path" width=30% height=30% />
+<img src="PathPlanRRT/Figures/onlineRRT_actualPath.jpg" title="Actual path" width=30% height=30% />
 
 __Another Example__
 
-<img src="PathPlanRRT/onlineRRTmainOutput3.jpg" title="Actual path 2" width=70% height=70% />
+<img src="PathPlanRRT/Figures/onlineRRTmainOutput3.jpg" title="Actual path 2" width=70% height=70% />
 
 ### 3. Object Detection (March 11, 2020)
 
-<img src="ObjectDetection/ObjectDetect_frame1.jpg" title="Object_Detection" width=90% height=90% />
+<img src="ObjectDetection/Figures/ObjectDetect_frame1.jpg" title="Object_Detection" width=90% height=90% />
 
 ### 4. Improvement on Object Detection (March 25, 2020)
-<img src="ObjectDetection/ObjectDetect_w_Rect.jpg" title="Object_Detection_Improved" width=90% height=90% />
+<img src="ObjectDetection/Figures/ObjectDetect_w_Rect.jpg" title="Object_Detection_Improved" width=90% height=90% />
 
 #### Top View image from depth info
 
-<img src="ObjectDetection/ObjectDetect_topView.JPG" title="Top_View" width=30% height=30% />
+<img src="ObjectDetection/Figures/ObjectDetect_topView.JPG" title="Top_View" width=30% height=30% />
 
 ### 5. Map the obstacle on path plan (Apr 1, 2020)
 
