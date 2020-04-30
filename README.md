@@ -22,7 +22,7 @@ Further instruction on UBC report template is [here](https://luckymeng7.github.i
 - Nevigate to folder `ObjectDetection` in MATLAB. This can be done by opening one of the matlab scripts here, for exmaple `videoProcess_main.m`
 - Type this command in command window: __run("videoProcess_main.m")__
 - Add any path needed to be included
-- Note: default path to the pre-saved Intel RealSense video is "C:\Users\Monica\Downloads\Videos\", please change them accordingly in `videoProcess_main.m` 
+- Note: default path to the pre-saved Intel RealSense video is `EECE597/Videos/`, please change them accordingly in `videoProcess_main.m` 
 
 #### Run path planning with obeject detection integrated:
 - Nevigate to folder `Integrate` in MATLAB. This can be done by opening one of the matlab scripts here, for example `integrate_main.m`
