@@ -1,6 +1,6 @@
 # Algorithm and Implementation
 
-The implementation of the project has been done in MATLAB. Rapid-exploring Random Tree Algorithm has been implemented for trajectory plan and object detection algorithm has been built with depth information extracted from RealSense Camera. The overall implementation has been committed to GitHub at __[this link](https://github.com/luckymeng7/EECE597)__
+The implementation of the project has been done in MATLAB. Rapid-exploring Random Tree Algorithm has been implemented for trajectory plan and object detection algorithm has been built with depth information extracted from RealSense Camera. The overall implementation has been committed to GitHub at [https://github.com/luckymeng7/EECE597](https://github.com/luckymeng7/EECE597)
 
 
 ```{r libraries, include=FALSE}
@@ -13,18 +13,17 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Rapid-exploring Random Tree Algorithm for Pathway Planning 
 
-Rapid-exploring Random Tree (RRT) algorithm was introduced by Steven M. LaVell and James J. Kuffner Jr [5].  To efficiently search nonconvex and high-dimensional spaces, the algorithm constructs a space-filling tree from samples drawn randomly in the search space and inherently grows towards large unsearched areas. 
+Rapid-exploring Random Tree (RRT) algorithm was introduced by Steven M. LaVell and James J. Kuffner Jr [@rrt].  To efficiently search nonconvex and high-dimensional spaces, the algorithm constructs a space-filling tree from samples drawn randomly in the search space and inherently grows towards large unsearched areas. 
 
-The output of the RRT algorithm is a tree(T) that contains all of the randomly sampled nodes(q) with connection to their inherit points. With object-oriented programming, each of the sampled node has been assigned as a class of Node with properties of index, parent index, position and path to node. An RRT class is defined to contain all generated nodes, with properties of total number of the nodes, initial node, positions of all existing node and a list of all existing nodes. A new node will be sampled in each iteration and the RRT tree will be updated if the path to this new node has avoided the obstacle. To generate a new node(qnew), a random point(qrand) will be firstly generated within the map range. Then it will be connected to the nearest node(qnear) on the tree. On the connection line, a point with max-step distance (step size) to the nearest point will be selected as the new node if it is confirmed as clear with obstacle free function. Figure \@ref(fig:figure1) shows the generation of one new node to the tree. 
-
+The output of the RRT algorithm is a tree(T) that contains all of the randomly sampled nodes(q) with connection to their inherit points. With object-oriented programming, each of the sampled node has been assigned as an instantiation of *Node* class with properties including index, parent index, position and path to node. The output tree is an instantiation of *RRT* class which is defined to contain all generated nodes, with properties including total number of the nodes, initial node, positions of all existing node and a list of all existing nodes. A new node will be sampled in each iteration and the RRT tree will be updated to include the new node if the path to this new node has avoided the obstacle. To generate a new node(qnew), a random point(qrand) will be firstly generated within the map range. Then it will be connected to the nearest node(qnear) on the tree. On the connection line, a point with max-step distance (step size) to the nearest point will be selected as the new node if it is confirmed as clear with obstacle free function. Figure \@ref(fig:figure1) shows the generation of one new node to the tree. The algorithm will use the initial point as the first *Node* of the tree, and update the RRT tree until the distance between the latest generated node and destination point is less than the step size.
 
 ```{r figure1, echo=F, eval=T, fig.width=9, fig.asp=1.0, fig.cap='(ref:figure1)', out.width="60%", fig.align='center'}
 knitr::include_graphics('figures/1.png')
 ```
 
-(ref:figure1) New Node Generation
+(ref:figure1) New Node Generation[@choset2015robotic]
 
-For a general configuration space, the algorithm in pseudocode is as follow [6]:
+For a general configuration space, the algorithm in pseudocode is as follow [@rrtCompare]:
 
 ```
 Algorithm T=(V,E) ← RRT*(qini)
@@ -51,17 +50,22 @@ T ← InsertNode(𝜱, qini, T);
 
 The inputs for the algorithm are initial position, destination position, max step size, obstacle size and position and the overall map size. The output for the function is a planned path and the overall tree. 
 
-Real-time obstacle detection has also been implemented. As the robot moving forward, the function would recalculate the tree when it detects a new obstacle shows up. The current position would be taken as the new start point and the destination position would still be the same. Figure \@ref(fig:figure2) shows path updated by twice after initial path planned.  
+Real-time obstacle detection has also been implemented. As the robot moving forward, the function would recalculate the tree when it detects a new obstacle shows up. The current position would be taken as the new start point and the destination position would still be the same. Figure \@ref(fig:figure2) shows path updated twice after initial path planned. 
 
-```{r figure2, echo=F, eval=T, fig.width=9, fig.asp=1.0, fig.cap='(ref:figure2)', out.width="70%", fig.align='center'}
-knitr::include_graphics('figures/2.png')
+
+```{r figure2, echo=F, eval=T, fig.width=9, fig.asp=1.0, fig.cap='(ref:figure2)', out.width="90%", fig.align='center'}
+knitr::include_graphics('figures/2-1.png')
 ```
 
 (ref:figure2) Path updated when new obstacle detected
 
+At the beginning, a original RRT path was calculated  from the start point to destination point. Figure \@ref(fig:figure2) (a) shows the original path with one obstacle detected in the filed. Then in figure \@ref(fig:figure2) (b), a new obstacle was added to the canvas after the robot moved along the original path for 10 steps. The current position at the time of (b) for the robot was the 10th Node on the original path. A new RRT tree was calculated to update the path which avoided the new obstacle. Similarly, in figure \@ref(fig:figure2) (c), a new obstacle was added to the canvas after the robot moved along the updated path for another 30 steps. Another new RRT was calculated to avoid the new obstacle. Then the robot would move on with the updated path to the destination point. Figure \@ref(fig:figure2) (d) shows the actual path of the robot moving from start to end point when new obstacles showed up along the way.
+
+The density of the tree shows the total generated *Nodes*. Mode random points generated to get the path leads to more *Nodes* on the tree. Small step size or long distance between the start and end point would increase the number of calculating iterations for the RRT. Other variants such as the position of obstacles would also influence the number of the calculation iterations. 
+
 ## Image Processing for Obstacle Detection
 
-With the video stream captured with Intel RealSense camera, the depth information could be used for object detection. With MATLAB’s ROS toolbox, the bag video was imported and processed as depth frames and RGB frames. A function has been implemented to identify the obstacle based on the depth information. On each of the frames, a mask will be created as any pixels that has depth value within the sensitive detection range will be set to 100 and the rest pixels will be set to 0. The comparison between regular RGB image and detected obstacle area are shown in figure \@ref(fig:figure3)  
+With the video stream captured with Intel RealSense camera, the depth information could be used for object detection. The output of the video With MATLAB’s ROS toolbox, the bag video was imported and processed as depth frames and RGB frames. A function has been implemented to identify the obstacle based on the depth information. On each of the frames, a mask will be created as any pixels that has depth value within the sensitive detection range will be set to 100 and the rest pixels will be set to 0. The comparison between regular RGB image and detected obstacle area are shown in figure \@ref(fig:figure3)  
 
 ```{r figure3, echo=F, eval=T, fig.width=9, fig.asp=1.0, fig.cap='(ref:figure3)', out.width="80%", fig.align='center'}
 knitr::include_graphics('figures/3.PNG')
@@ -81,7 +85,7 @@ Output videos are created by combining frames of top views or obstacle masks on 
 
 ## Measurement and Calculation of the Object Size 
 
-Based on the datasheet of the RealSense camera [7], the horizontal field of view (FOV) for depth image is 74 degree and vertical field of view for depth image is 62 degree. Based on the definition of FOV in figure \@ref(fig:figure5) as follow: 
+Based on the datasheet of the RealSense camera [7@realSenseD400, the horizontal field of view (FOV) for depth image is 74 degree and vertical field of view for depth image is 62 degree. Based on the definition of FOV in figure \@ref(fig:figure5) as follow: 
 
 
 ```{r figure5, echo=F, eval=T, fig.width=9, fig.asp=1.0, fig.cap='(ref:figure5)', out.width="60%", fig.align='center'}
@@ -136,7 +140,7 @@ Figure \@ref(fig:figure6) are the images for the above objects (1,2,3 from left 
 knitr::include_graphics('figures/6.PNG')
 ```
 
-(ref:figure6) Definition of field of view 
+(ref:figure6) Images for calibration
 
 To calculation with equation $$\frac{L1}{l1 \cdot D1} = \frac{L2}{l2 \cdot D2} = C$$, the following three objects in figure \@ref(fig:figure7) are measured (4, 5, 6 from left to right):
 
@@ -144,18 +148,18 @@ To calculation with equation $$\frac{L1}{l1 \cdot D1} = \frac{L2}{l2 \cdot D2} =
 knitr::include_graphics('figures/7.PNG')
 ```
 
-(ref:figure7) Definition of field of view 
+(ref:figure7) Images for measurement test 
 
 The comparison of calculation and measurement are as follow table \@ref(tab:mytable2) and table \@ref(tab:mytable3), where $$L1 = C \cdot l1 \cdot D1$$
 
 
 ```{r mytable2, echo=F, eval=T}
 df <- tribble(
-  ~"Item Number", ~"Depth(mm)", ~"Height(Pixel)", ~"Average Ch", ~"Width(Pixel)", ~"Average Cw",
+  ~"Item Number", ~"Depth(mm)", ~"Height(Pixel)", ~"Average Ch", ~"Width(Pixel)", ~"Average Cw", ~"Calculated Height(mm)", ~"Actual Height(mm)", ~"Error Rate(percentage)", ~"Calculated Width(mm)", ~"Actual Width(mm)", ~"Weight Error Rate(percentage)",
   #--/--/--/--/--/----
-  4, 2890, 670, 0.00109, 225, 0.0011,
-  5, 325, 201, 0.00109, 152, 0.0011,
-  6, 557, 518, 0.00109, 117, 0.0011
+  4, 2890, 670, 0.00109, 225, 0.0011, 2110,	2100,	0.48,	898, 920,	2.4,
+  5, 325, 201, 0.00109, 152, 0.0011, 71.2,	80,	11,	54.3,	60,	9.5,
+  6, 557, 518, 0.00109, 117, 0.0011, 314.5,	325,	3.2,	71.7,	82, 12.6
 )
 
 df <- as.data.frame(df)
@@ -192,22 +196,23 @@ df <- as.data.frame(df)
               )
 ```
 
-According to the datasheet [7] of RealSense Camera, there is a mechanical tolerance of +/-5% for the camera. Therefore, the error measured is within the tolerance. As we could see, the error will be relatively smaller if the shape of the object is rectangle and facing the camera perpendicularly.  Physical measurement on object with anomalous shape will introduce more error compare to rectangles. Also, to simplify the calculation, depth value of the center on the object was taken to calculate the constant C and later the actual height or width. However, the depth value at the center of the water bottle is different from the depth value for the edge. This deviation on depth value will introduce more error. Objects not facing the camera perpendicularly will also introduce errors with the misalignment for the width and height.
+According to the datasheet [7@realSenseD400 of RealSense Camera, there is a mechanical tolerance of +/-5% for the camera. Therefore, the error measured is within the tolerance. As we could see, the error will be relatively smaller if the shape of the object is rectangle and facing the camera perpendicularly.  Physical measurement on object with anomalous shape will introduce more error compare to rectangles. Also, to simplify the calculation, depth value of the center on the object was taken to calculate the constant C and later the actual height or width. However, the depth value at the center of the water bottle is different from the depth value for the edge. This deviation on depth value will introduce more error. Objects not facing the camera perpendicularly will also introduce errors with the misalignment for the width and height.
 
 To increase the accuracy for the measurement, two optimization strategies could be done. First one is using the average depth value of the object for the calculation. The other method is to calculate the width or height with the coordination in 3D which combines both depth and RGB information.   
  
 ## Combination of Obstacle Detection and Trajectory Plan
 
-In order to integrate the detected obstacle onto the trajectory plan, the detected obstacle top view will be projected on the map canvas after re-size and rotation. Assuming the camera is facing the destination direction when it is at initial point and the overall canvas has a dimension of 200x200 pixel, the top view obstacle will be re-sized to meet the mapping scale and rotated to the camera orientation. A mask based on the top view frames will be shifted to the start point with the bottom center point coincide with the camera’s current position, which is the initial position for now. As there is a new obstacle detected, the trajectory plan function will re-calculate the RRT tree. Figure \@ref(fig:figure8) shows the obstacle mask generated with the top view frame from section 3.2 and the RRT calculated with obstacle mask projected on map canvas. The scale for the map canvas is 1:31.25, which means that 31.25 pixels on the map represent 1 meter. 
+In order to integrate the detected obstacle onto the trajectory plan, the top view of detected obstacle will be projected on the map canvas after re-sizing and rotation. Assuming the initial direction of the camera is from start point to destination point. Also, the current map size is on dimension of 200x200 pixel, the top view of the obstacle will be re-sized to meet the mapping scale and rotated based on camera orientation. The mask based on the top view frames will be shifted onto the canvas with the bottom center point of the mask coincide with the camera’s current position, which is the initial position at beginning. When new obstacles detected as the camera moving forward, the trajectory plan function will re-calculate the path with generating a new RRT tree. Figure \@ref(fig:figure8) shows the obstacle mask generated with the top view frame from section 2.2 and an RRT path is calculated with obstacle mask projected on map canvas. The scale for the map canvas is 1:31.25, which means that 31.25 pixels on the map represent 1 meter. 
 
 ```{r figure8, echo=F, eval=T, fig.width=9, fig.asp=1.0, fig.cap='(ref:figure8)', out.width="90%", fig.align='center'}
 knitr::include_graphics('figures/8.png')
 ```
 
-(ref:figure8) Definition of field of view
+(ref:figure8) Detect Obstacle on Map
 
-Later, once the camera starts to move based on the generated path, the object detection and projection will continue. After the initial position, the direction of the camera will be defined by the vector subtraction from current coordinate by previous coordinate. And the mask will be re-size based on the scale, then rotated to the current direction and shifted to the current position. If more obstacles are found since last project, the RRT tree will be recalculated. 
-In order to increase the safety and avoid the drone being trapped in the anomaly shaped obstacle, a minimum volume ellipsoid has been generated to cover all of the obstacle points as shown in figure \@ref(fig:figure9). The algorithm to find the ellipsoid is discussed in the textbook “Convex Optimization” [9] and the function usage in MATLAB is described in [10]. 
+Once the camera starts to move based on the generated path, the object detection and path recalculate will continue. After the start point, the direction of the camera will be defined as the vector difference between current coordinate and previous coordinate. The newly generated mask will be re-sized, shifted and rotated to the new position and direction. If the obstacles condition has been changed since last projection, a new RRT tree will be generated and the camera will move along the new path. 
+
+In order to increase the safety and avoid the drone being trapped in the anomaly shaped obstacle, a minimum volume ellipsoid has been generated to cover all of the obstacle points as shown in figure \@ref(fig:figure9). The algorithm to find the ellipsoid is discussed in the textbook “Convex Optimization” [[@convexOpt]and the function usage in MATLAB is described in [[@miniEllipsoid] 
 
 ```{r figure9, echo=F, eval=T, fig.width=9, fig.asp=1.0, fig.cap='(ref:figure9)', out.width="90%", fig.align='center'}
 knitr::include_graphics('figures/9.png')
