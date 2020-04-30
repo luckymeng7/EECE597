@@ -28,7 +28,7 @@ knitr::kable(abbreviations,
 
 # Acknowledgements
 
-I would like to thank the supervision of Dr. Maryam Kamgarpour and Dr. Mahdi Yousefi.
+I would like to thank Dr. Maryam Kamgarpour and Dr. Mahdi Yousefi for supervising the project implementation and the final report. 
 
 
 \mainmatter
